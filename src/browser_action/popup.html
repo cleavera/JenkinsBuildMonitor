@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="monitor.action" ng-csp>
+	<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/src/shared/module.js"></script>
+    <script type="text/javascript" src="/src/shared/logging.js"></script>
+    <script type="text/javascript" src="/src/shared/persistance.js"></script>
+    <script type="text/javascript" src="/src/shared/resources/stream.js"></script>
+    <script type="text/javascript" src="/src/shared/resources/build.js"></script>
+    <script type="text/javascript" src="module.js"></script>
+    <script type="text/javascript" src="stream-list/directive.js"></script>
+    <script type="text/javascript" src="build-status/directive.js"></script>
+	</head>
+	<body>
+        <section build-status></section>
+		<section stream-list></section>
+	</body>
+</html>

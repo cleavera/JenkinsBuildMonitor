@@ -1,0 +1,23 @@
+{
+  "name": "Build monitor",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Monitors the jenkins builds and presents them in a viewable format",
+  "icons": {
+    "32": "icons/jenkins.png"
+  },
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/jenkins.png",
+    "default_title": "Build monitor",
+    "default_popup": "src/browser_action/popup.html"
+  },
+  "permissions": [
+    "notifications",
+    "storage",
+    "http://msl-svr222:8081/*"
+  ]
+}

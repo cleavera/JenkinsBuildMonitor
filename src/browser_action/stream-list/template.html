@@ -1,0 +1,12 @@
+<details>
+	<summary>
+		Subscribe to streams
+	</summary>
+
+	<ul class="streams">
+	  <li ng-repeat="(name, checked) in model">
+	  	<input type="checkbox" id="model.{{name}}" ng-model="model[name]" />
+	    <label for="model.{{name}}">{{name}}</label>
+	  </li>
+	</ul>
+</details>
