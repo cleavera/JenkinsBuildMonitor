@@ -5,6 +5,15 @@
         model = {},
         subscribedStreams = Persistance.Get('SubscribedStreams') || [];
 
+      var clearModel = function (subscribedStreams) {
+        var stream;
+        for (stream in model) {
+          if (model.hasOwnProperty(stream) && subscribedStreams.indexOf(model[stream]) === -1) {
+            delete model[stream];
+          }
+        }
+      };
+
       var parseBuilds = function (data) {
         var blame = '';
         if (data.culprits[0]) {
@@ -19,6 +28,8 @@
       };
 
       var getBuildStatus = function (subscribedStreams) {
+        clearModel(subscribedStreams);
+
         for (x = 0; x < subscribedStreams.length; x++) {
           BuildModel.GetLast(subscribedStreams[x]).then(parseBuilds);
         }
