@@ -14,13 +14,9 @@
         }
       },
 
-      url: {
-        map: 'url'
-      },
+      url: {},
 
-      number: {
-        map: 'number'
-      },
+      number: {},
 
       status: {
         map: function (data) {

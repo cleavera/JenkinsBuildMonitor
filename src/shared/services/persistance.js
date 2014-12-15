@@ -67,4 +67,4 @@
       Unsubscribe: unsubscribe
     };
   }]);
-}(angular.module('monitor.shared')));
+}(angular.module('monitor.shared.services')));
