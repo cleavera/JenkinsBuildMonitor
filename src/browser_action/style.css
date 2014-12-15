@@ -117,6 +117,19 @@ section + section {
 	border-right-width: 0;
 	margin-bottom: 10px;
 	display: flex;
+	position: relative;
+}
+
+.buildstatus dt::before {
+	content: attr(data-build-number);
+	position: absolute;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.3);
+	pointer-events: none;
+	min-width: 75px;
 }
 
 .buildstatus dt a {
@@ -133,7 +146,7 @@ section + section {
 	background: rgba(255, 255, 255, 0.2);
 }
 
-.buildstatus dt span {
+.buildstatus dt small {
 	font-size: 13px;
 }
 

@@ -7,8 +7,9 @@
 
       var clearModel = function (subscribedStreams) {
         var stream;
+
         for (stream in model) {
-          if (model.hasOwnProperty(stream) && subscribedStreams.indexOf(model[stream]) === -1) {
+          if (model.hasOwnProperty(stream) && subscribedStreams.indexOf(stream) === -1) {
             delete model[stream];
           }
         }
@@ -20,10 +21,11 @@
           blame = data.culprits[0].fullName;
         }
 
-        model[data.fullDisplayName] = {
+        model[data.name] = {
           blame: blame.toLowerCase(),
           url: data.url,
-          status: data.building ? 'building' : data.result === 'SUCCESS' ? 'success' : 'failure'
+          status: data.building ? 'building' : data.result === 'SUCCESS' ? 'success' : 'failure',
+          number: data.number
         };
       };
 

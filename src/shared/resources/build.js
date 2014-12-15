@@ -18,7 +18,7 @@
 
     var extractBuildName = function (data) {
       var fullname = data.fullDisplayName.toString();
-      data.name = fullname.substring(0, fullname.indexOf('#'));
+      data.name = fullname.substring(0, fullname.indexOf('#') - 1);
       return data;
     };
 

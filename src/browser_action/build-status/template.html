@@ -1,6 +1,11 @@
 <h1>Build status</h1>
 
 <dl class="buildstatus">
-	<dt ng-repeat-start="(name, val) in model" ng-class="val.status"><a href="{{val.url}}" target="_blank">{{name}}<span>{{val.blame}}</span></a></dt>
+	<dt title="{{name}} - build {{val.number}}" data-build-number="{{val.number}}" ng-repeat-start="(name, val) in model" ng-class="val.status">
+		<a href="{{val.url}}" target="_blank">
+			{{name}}
+			<small>{{val.blame}}</small>
+		</a>
+	</dt>
 	<dd ng-repeat-end ng-class="val.status">{{val.status}}</dd>
 </dl>
