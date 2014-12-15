@@ -1,5 +1,5 @@
 (function (module) {
-  module.factory('BuildModel', ['$http', function ($http) {
+  module.factory('BuildResource', ['$http', function ($http) {
   	var get = function (stream, build) {
 	    return $http.get('http://msl-svr222:8081/job/'+ stream +'/'+ build +'/api/json').then(function (response) {
         return extractBuildName(response.data);

@@ -1,5 +1,5 @@
 (function (module) {
-  module.directive('buildStatus', ['BuildModel', 'Persistance', function (BuildModel, Persistance) {
+  module.directive('buildStatus', ['MapperService', 'BuildResource', 'Persistance', 'BuildModel', function (map, BuildResource, Persistance, BuildModel) {
     function link(scope) {
       var x,
         model = {},
@@ -16,24 +16,14 @@
       };
 
       var parseBuilds = function (data) {
-        var blame = '';
-        if (data.culprits[0]) {
-          blame = data.culprits[0].fullName;
-        }
-
-        model[data.name] = {
-          blame: blame.toLowerCase(),
-          url: data.url,
-          status: data.building ? 'building' : data.result === 'SUCCESS' ? 'success' : 'failure',
-          number: data.number
-        };
+        model[data.name] = map(data, BuildModel);
       };
 
       var getBuildStatus = function (subscribedStreams) {
         clearModel(subscribedStreams);
 
         for (x = 0; x < subscribedStreams.length; x++) {
-          BuildModel.GetLast(subscribedStreams[x]).then(parseBuilds);
+          BuildResource.GetLast(subscribedStreams[x]).then(parseBuilds);
         }
       };
 

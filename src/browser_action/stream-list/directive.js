@@ -1,9 +1,9 @@
 (function (module) {
-  module.directive('streamList', ['StreamModel', 'Persistance', function (StreamModel, Persistance) {
+  module.directive('streamList', ['StreamResource', 'Persistance', function (StreamResource, Persistance) {
     function link(scope) {
       var x,
         subscribed = Persistance.Get('SubscribedStreams') || [],
-        streams = StreamModel.Get().then(function (response) {
+        streams = StreamResource.Get().then(function (response) {
           var streams = response.data.jobs;
           assignModel(streams);
           return streams;

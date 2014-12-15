@@ -1,5 +1,5 @@
 (function (module) {
-  module.factory('BuildNotificationService', ['BuildModel', 'Persistance', function (BuildModel, Persistance) {
+  module.factory('BuildNotificationService', ['MapperService', 'BuildResource', 'Persistance', 'BuildModel', function (map, BuildResource, Persistance, BuildModel) {
     var model = {},
       streams = Persistance.Get('SubscribedStreams') || [];
 
@@ -15,18 +15,9 @@
 
     var parseBuilds = function (data) {
       var build,
-        blame = '',
         name = data.name;
 
-      if (data.culprits[0]) {
-        blame = data.culprits[0].fullName;
-      }
-
-      build = {
-        blame: blame.toLowerCase(),
-        url: data.url,
-        status: data.building ? 'started' : data.result === 'SUCCESS' ? 'succeeded' : 'failed'
-      };
+      build = map(data, BuildModel);
 
       if(model[name] && model[name].status != build.status) {
         notifications(name, build.status, build.blame);
@@ -39,7 +30,7 @@
       var x;
 
       for (x = 0; x < streams.length; x++) {
-        BuildModel.GetLast(streams[x]).then(parseBuilds);
+        BuildResource.GetLast(streams[x]).then(parseBuilds);
       }
     };
 
