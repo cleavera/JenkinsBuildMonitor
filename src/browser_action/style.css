@@ -246,8 +246,3 @@ section + section {
 .buildstatus dd.failed::after {
 	content: '\f00d';
 }
-
-input[type=text] {
-	border: none;
-	border-bottom: 1px solid #333;
-}

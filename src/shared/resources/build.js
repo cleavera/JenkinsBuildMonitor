@@ -1,17 +1,13 @@
 (function (module) {
-  module.factory('BuildResource', ['$http', 'Persistance', function ($http, Persistance) {
+  module.factory('BuildResource', ['$http', function ($http) {
   	var get = function (stream, build) {
-      var server = Persistance.Get('server');
-      
-	    return $http.get(server + '/job/'+ stream +'/'+ build +'/api/json').then(function (response) {
+	    return $http.get('http://msl-svr222:8081/job/'+ stream +'/'+ build +'/api/json').then(function (response) {
         return extractBuildName(response.data);
       });
 	  };
 
     var getAll = function (stream) {
-      var server = Persistance.Get('server');
-
-      return $http.get(server + '/job/'+ stream +'/api/json').then(function (response) {
+      return $http.get('http://msl-svr222:8081/job/'+ stream +'/api/json').then(function (response) {
         return extractBuildName(response.data);
       });
     };

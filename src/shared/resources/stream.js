@@ -1,10 +1,8 @@
 (function (module) {
-  module.factory('StreamResource', ['$http', 'Persistance', function ($http, Persistance) {
+  module.factory('StreamResource', ['$http', function ($http) {
     return {
       Get: function () {
-      	var server = Persistance.Get('server');
-
-        return $http.get(server + '/api/json');
+        return $http.get('http://msl-svr222:8081/api/json');
       }
     };
   }]);
